@@ -1,4 +1,34 @@
-.content {
+.home-content {
+    position: relative;
     display: flex;
     justify-content: space-between;
+    background-color: var(--violet);
+}
+
+.home-content img {
+    
+}
+
+.home-content img:first-child {
+    position: absolute;
+}
+
+.home-content img:last-child {
+    margin-left: auto;
+}
+
+.description {
+    color: white;
+    position: absolute;
+    top: 50%;
+    left: 10%;
+    font-size: 2rem;
+}
+
+.description  p {
+    margin: 0;
+}
+
+.footer {
+    margin-top: auto;
 }
