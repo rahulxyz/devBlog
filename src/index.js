@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import {BrowserRouter as Router} from 'react-router-dom';
-import {createBrowserHistory} from 'history';
+import { BrowserRouter as Router } from 'react-router-dom';
+import { createBrowserHistory } from 'history';
 
 import './index.css';
 import App from './App';
@@ -10,7 +10,7 @@ import reportWebVitals from './reportWebVitals';
 ReactDOM.render(
   <React.StrictMode>
     <Router history={createBrowserHistory()}>
-    <App />
+      <App />
     </Router>
   </React.StrictMode>,
   document.getElementById('root')

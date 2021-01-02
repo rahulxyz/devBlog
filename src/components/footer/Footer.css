@@ -1,0 +1,17 @@
+
+.footer-content ul {
+    display: flex;
+    margin-left: auto;
+    width: fit-content;
+    padding: 16px 0;
+}
+
+.footer-content ul li {
+    margin-right: 8px;
+}
+
+.footer-content ul li:last-child {
+    margin-right: 0px;
+}
+
+
