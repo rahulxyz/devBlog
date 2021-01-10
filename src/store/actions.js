@@ -1,18 +1,25 @@
 import types from './types';
+import * as operations from './operations';
 
 const actions = {
-    login
+    login,
+    register
 }
 
 function login(credentials){
    
-    return dispatch =>{
+    return async dispatch =>{
 
         dispatch(request());
         try{
-            /* api call */
-            const token = "token";
-            dispatch(success(token));
+            const response = await operations.login(credentials);
+            const data = await response.data;
+            localStorage.setItem("token",data.token);
+            const userData = {
+                username: data.name,
+                email: data.email
+            }
+            dispatch(success(userData));
 
         }catch(error){
             dispatch(failure(error));
@@ -31,5 +38,33 @@ function login(credentials){
         return {type: types.LOGIN_FAILURE, error};
     }
 }
+
+function register(credentials){
+   
+    return async dispatch =>{
+
+        dispatch(request());
+        try{
+            const response = await operations.register(credentials);
+            dispatch(success());
+        }catch(error){
+            dispatch(failure(error));
+        }
+    }
+
+    function request() {
+        return {type: types.REGISTER_REQUEST};
+    }
+
+    function success() {
+        return {type: types.REGISTER_SUCCESS};
+    }
+
+    function failure(error) {
+        return {type: types.REGISTER_FAILURE, error};
+    }
+}
+
+
 
 export default actions;

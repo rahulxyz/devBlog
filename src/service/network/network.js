@@ -1,15 +1,13 @@
 import axios from "axios";
 
-const API = axios.create({
-  baseURL: "https://jsonplaceholder.typicode.com/",
+export const API = axios.create({
+  baseURL: "https://devblogf.herokuapp.com/api/",
 });
 
 export async function getRequestedParams(queryParams, body, withToken = true) {
   const headers = withToken ? { Authorization: `Bearer /* token */` } : {};
   return {
     headers: headers,
-    body: body,
-    params: queryParams,
   };
 }
 
@@ -22,10 +20,10 @@ export function onGet(path, params, withToken = true) {
   return invokeAPI();
 }
 
-export function onPost(path, params, withToken = true, body = {}) {
+export function onPost(path, body = {}, params, withToken = true) {
   async function invokeAPI() {
     let resultParam = await getRequestedParams(params, body, withToken);
-    return await API.post(path, resultParam);
+    return await API.post(path, body, resultParam.headers);
   }
 
   return invokeAPI();

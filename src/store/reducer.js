@@ -1,7 +1,7 @@
 import types from './types';
 
 const initalState = {
-    token: ''
+    user: undefined
 }
 
 export function auth(state=initalState, action){
@@ -9,7 +9,7 @@ export function auth(state=initalState, action){
         case types.LOGIN_SUCCESS:
             return {
                 ...state,
-                token: action.payload
+                user: action.payload
             }
         default:
             return state;

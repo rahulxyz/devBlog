@@ -18,15 +18,33 @@ class Login extends Component {
 
   handleSubmit = (event) => {
     event.preventDefault();
-    const username = event.target[0].value;
-    const password = event.target[1].value;
-
-    const credentials = {
-        username,
-        password
+    const {visibleTab} = this.state;
+    
+    if(visibleTab === REGISTER){
+      const registerData = {
+        name: event.target[0].value,
+        email: event.target[1].value,
+        password: event.target[2].value,
+      }
+      this.handleRegister(registerData);
+    }else if(visibleTab === LOGIN){
+      const loginData = {
+        email: event.target[0].value,
+        password: event.target[1].value,
+      }
+      this.handleLogin(loginData);
     }
-    this.props.login(credentials);
+
+    
   };
+
+  handleLogin = (loginData)=>{
+    this.props.login(loginData);
+  }
+
+  handleRegister = (registerData)=>{
+    this.props.register(registerData);
+  }
 
   selectTab = (tab) => {
     this.setState({ visibleTab: tab });
@@ -62,8 +80,8 @@ class Login extends Component {
                 <form onSubmit={this.handleSubmit} >
                   <input
                     type="text"
-                    placeholder="Username"
-                    name="username"
+                    placeholder="Email"
+                    name="email"
                   />
                   <input
                     type="password"
@@ -84,6 +102,7 @@ class Login extends Component {
               <article id="Register" className="tab-content">
                 <form onSubmit={this.handleSubmit} autoComplete="chrome-off">
                   <input type="text" placeholder="Username" name="username" />
+                  <input type="text" placeholder="Email" name="email" />
                   <input
                     type="password"
                     placeholder="Password"
@@ -108,7 +127,8 @@ class Login extends Component {
 }
 
 const mapDispatchToProps = {
-    login: actions.login
+    login: actions.login,
+    register: actions.register
 }
 
 export default connect(null, mapDispatchToProps)(Login);
