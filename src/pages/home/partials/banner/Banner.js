@@ -9,7 +9,7 @@ const Banner = () => {
       <img src={patternLeft} alt="landing-img" />
       <div className="description">
         <h1>Dev Mentor</h1>
-        <p>Improve your developer skills by building real projects</p>
+        {/* <p>Improve your developer skills by building real projects</p> */}
         <div class="footer">
           <button>Twit</button>
           <button>Face</button>

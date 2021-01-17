@@ -1,0 +1,7 @@
+const types = {
+    BLOG_LIST_REQUEST :"BLOG_LIST_REQUEST",
+    BLOG_LIST_SUCCESS :"BLOG_LIST_SUCCESS",
+    BLOG_LIST_FAILURE :"BLOG_LIST_FAILURE",
+}
+
+export default types;

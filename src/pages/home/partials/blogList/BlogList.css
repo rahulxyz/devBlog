@@ -1,0 +1,36 @@
+.bloglist-wrapper {
+    position: relative;
+    color: var(--text-grey);
+    font-size: 20px;
+}
+
+.bloglist-content li {
+    
+    padding: 32px 32px 18px 32px;
+    border-bottom: 1px solid var(--grayish-blue);
+    display: flex;
+    justify-content: space-between;
+}
+
+.bloglist-content .description h2 {
+    font-size: 26px;
+    color: var(--text-black);
+    font-weight: 800;
+}
+
+.bloglist-content .description p {
+    font-size: 20px;
+    color: var(--text-black);
+    font-weight: 600;
+}
+
+.bloglist-content .author title {
+    font-size: 16px;
+    color: #717272;
+}
+
+.bloglist-content .author p {
+    font-size: 15px;
+    color: var(--text-grey);
+}
+

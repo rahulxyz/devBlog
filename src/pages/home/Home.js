@@ -14,7 +14,7 @@ class Home extends Component {
         <div className="container">
           <div className="home-content">
           <Banner />
-          {/* <BlogList /> */}
+          <BlogList /> 
           </div>
         </div>
       </div>
