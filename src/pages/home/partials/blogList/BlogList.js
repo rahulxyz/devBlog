@@ -32,7 +32,7 @@ class BlogList extends Component {
                     <p>{item.lastUpdatedAt}</p>
                   </div>
                   </div>
-                <img src={face} alt="Image" />       
+                <img src={face} alt="Image" height="300px"/>       
               </li>
             );
           })}

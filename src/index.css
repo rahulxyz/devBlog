@@ -18,6 +18,8 @@
 
   --text-gray: #0000008A;
   --text-black:#000000D6;
+
+  box-sizing: border-box;
 }
 
 body {
@@ -28,12 +30,20 @@ body {
 }
 
 .container {
-  width: 1366px;
+  width: 1024px;
   margin: auto;
+  box-sizing: border-box;
 }
 
 ul {
   list-style: none;
   margin: 0;
   padding: 0;
+}
+
+@media(max-width: 1024px) {
+  .container {
+    width: 100%;
+    padding: 16px;
+  }
 }

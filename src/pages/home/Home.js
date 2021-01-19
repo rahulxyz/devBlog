@@ -11,12 +11,10 @@ class Home extends Component {
   render() {
     return (
       <div className="home-wrapper">
-        <div className="container">
           <div className="home-content">
           <Banner />
           <BlogList /> 
           </div>
-        </div>
       </div>
     );
   }

@@ -6,7 +6,7 @@
 
 .bloglist-content li {
     
-    padding: 32px 32px 18px 32px;
+    
     border-bottom: 1px solid var(--grayish-blue);
     display: flex;
     justify-content: space-between;
@@ -20,7 +20,7 @@
 
 .bloglist-content .description p {
     font-size: 20px;
-    color: var(--text-black);
+    color: var(--text-gray);
     font-weight: 600;
 }
 
@@ -31,6 +31,6 @@
 
 .bloglist-content .author p {
     font-size: 15px;
-    color: var(--text-grey);
+    color: var(--text-gray);
 }
 
