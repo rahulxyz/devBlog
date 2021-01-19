@@ -2,7 +2,9 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import actions from "../actions";
 import "./BlogList.css";
-import face from '../../../../assets/face.png';
+import laptop from '../../../../assets/laptop-mobile.jpeg';
+import avatar from '../../../../assets/avatar.jpeg';
+
 
 class BlogList extends Component {
   state = {};
@@ -20,19 +22,24 @@ class BlogList extends Component {
         <ul className="bloglist-content">
           
           {blogList.map((item, index) => {
+            let date = new Date(item.lastUpdatedAt);
+            let lastUpdatedAt = date.toLocaleString('default', { month: 'long' }).substring(0,3)+" "+date.getUTCDate();
             return (
-              <li key={index}>
+              <li key={index} >
                 <div>
                   <div className="description">
                     <h2>{item.title}</h2>
                     <p>{item.textPreview}</p>
                   </div>
                   <div className="author">
-                    <title>Max Payne</title>
-                    <p>{item.lastUpdatedAt}</p>
+                    <img src={avatar} alt="avatar" />
+                    <div>
+                    <h6>Max Payne</h6>
+                    <p>{lastUpdatedAt}</p>
+                    </div>
                   </div>
                   </div>
-                <img src={face} alt="Image" height="300px"/>       
+                <img src={laptop} alt="Image" height="300px"/>       
               </li>
             );
           })}

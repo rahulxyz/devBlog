@@ -1,3 +1,7 @@
+.footer-wrapper {
+    color: var(--violet);
+    font-weight: 600;
+}
 
 .footer-content ul {
     display: flex;

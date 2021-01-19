@@ -3,10 +3,10 @@ import './Navbar.css';
 
 const Navbar = () => {
     return (
-        <header>
+        <header className="navbar-wrapper">
             <div className="container">
                 <div className="navbar-content">
-                    <div>DevBlog</div>
+                    <div className="logo">DevBlog</div>
                     <div>About Us</div>
                 </div>
             </div>
