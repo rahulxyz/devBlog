@@ -8,6 +8,10 @@
     margin-top: 32px;
 }
 
+.bloglist-content a{
+    text-decoration: none;
+}
+
 .bloglist-content li {
     border-bottom: 1px solid var(--grayish-blue);
     display: flex;

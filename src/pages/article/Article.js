@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import "./Article.css";
 import Laptop from "../../assets/laptop-mobile.jpeg";
 import actions from "./partials/actions";
+import { formatDate } from '../../utils/helper';
 
 class Article extends Component {
     state = {};
@@ -14,7 +15,8 @@ class Article extends Component {
 
     render() {
         const {title, text, lastUpdatedAt, tags} = this.props.article;
-        return (
+        const date = formatDate(lastUpdatedAt);
+        return (    
             <div className="article-wrapper">
                 <div className="container">
                     <div className="article-content">
@@ -28,7 +30,7 @@ class Article extends Component {
                             <h1>{title}</h1>
                             <div className="article-author">
                                 <p>Max Payne</p>
-                                <p>{lastUpdatedAt}</p>
+                                <p>{date}</p>
                             </div>
                             <p className="article-text">{text}</p>
                             <ul className="artcle-tags">
