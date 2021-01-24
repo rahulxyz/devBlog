@@ -15,7 +15,7 @@ class BlogList extends Component {
 
   render() {
     const { blogList } = this.props;
-    
+
     return (
       <div className="bloglist-wrapper">
         <div className="container">

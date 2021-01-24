@@ -1,0 +1,8 @@
+const types =
+{
+    ARTICLE_REQUEST :"ARTICLE_REQUEST",
+    ARTICLE_SUCCESS :"ARTICLE_SUCCESS",
+    ARTICLE_FAILURE :"ARTICLE_FAILURE",
+}
+
+export default types;

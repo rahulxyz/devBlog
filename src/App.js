@@ -13,7 +13,7 @@ function App() {
     <div className="App">
       <Navbar />
       <Switch>  
-        <Route path="/article/:id" component={Article} />
+        <Route path="/api/feed/newsFeed/:id" component={Article} />
         <Route path="/login" component={Login}/>
         <Route path="/" component={Home} />
       </Switch>
