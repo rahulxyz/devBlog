@@ -9,7 +9,7 @@ const actions = {
 function login(credentials){
    
     return async dispatch =>{
-
+        
         dispatch(request());
         try{
             const response = await operations.login(credentials);
@@ -20,7 +20,6 @@ function login(credentials){
                 email: data.email
             }
             dispatch(success(userData));
-
         }catch(error){
             dispatch(failure(error));
         }
@@ -47,8 +46,10 @@ function register(credentials){
         try{
             const response = await operations.register(credentials);
             dispatch(success());
+            return Promise.resolve();
         }catch(error){
             dispatch(failure(error));
+            return Promise.reject();
         }
     }
 

@@ -16,6 +16,12 @@ class Login extends Component {
       this.props.login();
   }
 
+  componentDidUpdate(prevProps){
+    if(prevProps.isAuthorised  !== this.props.isAuthorised && this.props.isAuthorised){
+      this.props.history.push("/")
+    }
+  }
+
   handleSubmit = (event) => {
     event.preventDefault();
     const {visibleTab} = this.state;
@@ -42,8 +48,13 @@ class Login extends Component {
     this.props.login(loginData);
   }
 
-  handleRegister = (registerData)=>{
-    this.props.register(registerData);
+  handleRegister = async (registerData)=>{
+    try{
+      await this.props.register(registerData);
+      this.setState({visibleTab: LOGIN});
+    } catch(error){
+      //handle error
+    }
   }
 
   selectTab = (tab) => {
@@ -126,9 +137,15 @@ class Login extends Component {
   }
 }
 
+const mapStateToProps = (state)=>{
+  return {
+    isAuthorised: state.auth.isAuthorised
+  }
+}
+
 const mapDispatchToProps = {
     login: actions.login,
     register: actions.register
 }
 
-export default connect(null, mapDispatchToProps)(Login);
+export default connect(mapStateToProps, mapDispatchToProps)(Login);

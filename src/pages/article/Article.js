@@ -4,6 +4,7 @@ import "./Article.css";
 import Laptop from "../../assets/laptop-mobile.jpeg";
 import actions from "./partials/actions";
 import { formatDate } from '../../utils/helper';
+import Modal from "../../components/modal/Modal";
 
 class Article extends Component {
     state = {};
@@ -13,13 +14,25 @@ class Article extends Component {
         this.props.getArticleById(id);
     }
 
+    handleUpdate = (formData)=>{
+        const {updateBlog} = this.props;
+        updateBlog(formData);
+      }
+
     render() {
-        const {title, text, lastUpdatedAt, tags} = this.props.article;
+        const {toggleAdd, addModal, article} = this.props;
+        const {title, text, lastUpdatedAt, tags} = article;
         const date = formatDate(lastUpdatedAt);
+
         return (    
             <div className="article-wrapper">
                 <div className="container">
                     <div className="article-content">
+
+                        <div className="article-modal" >
+                        {addModal && <Modal toggleAdd={toggleAdd} handleSave={this.handleUpdate}/>}
+                        </div>
+
                         <img
                             className="banner-img"
                             src={Laptop}
@@ -54,6 +67,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = {
     getArticleById: actions.getArticleById,
+    updateBlog: actions.updateBlog
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Article);

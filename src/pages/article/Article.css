@@ -47,6 +47,10 @@
     margin-right: 0.5rem;
 }
 
+.article-modal .modal-wrapper{
+    width: inherit;
+}
+
 @media(max-width: 640px) {
     .article-description {
         width: 100%;

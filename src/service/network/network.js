@@ -5,7 +5,9 @@ export const API = axios.create({
 });
 
 export async function getRequestedParams(queryParams, body, withToken = true) {
-  const headers = withToken ? { Authorization: `Bearer /* token */` } : {};
+  const token = localStorage.getItem("token")
+  const headers = withToken ? { token: token } : {};
+  
   return {
     headers: headers,
   };
@@ -23,7 +25,7 @@ export function onGet(path, params, withToken = true) {
 export function onPost(path, body = {}, params, withToken = true) {
   async function invokeAPI() {
     let resultParam = await getRequestedParams(params, body, withToken);
-    return await API.post(path, body, resultParam.headers);
+    return await API.post(path, body, resultParam);
   }
 
   return invokeAPI();
