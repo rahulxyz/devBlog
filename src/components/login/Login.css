@@ -93,3 +93,7 @@
     background: white;
     color: black;
 }
+
+.error-msg {
+    color: red;
+}

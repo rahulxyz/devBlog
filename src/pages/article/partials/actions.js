@@ -1,5 +1,6 @@
 import types from './types';
 import * as operations from './operations';
+import { showLoader } from '../../../components/loader/partials/actions';
 
 const actions = {
     getArticleById,
@@ -37,7 +38,7 @@ function getArticleById(id) {
 
 function updateBlog(body) {
     return async dispatch =>{
-
+        dispatch(showLoader(true))
         dispatch(request());
         try{
             const response = await operations.updateBlog(body);
@@ -46,6 +47,8 @@ function updateBlog(body) {
             dispatch(success(data));
         }catch(error){
             dispatch(failure(error));
+        }finally{
+            dispatch(showLoader(false))
         }
     }
 

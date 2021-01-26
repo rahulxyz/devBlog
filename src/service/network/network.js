@@ -5,7 +5,7 @@ export const API = axios.create({
 });
 
 export async function getRequestedParams(queryParams, body, withToken = true) {
-  const token = localStorage.getItem("token")
+  const token = sessionStorage.getItem("token")
   const headers = withToken ? { token: token } : {};
   
   return {

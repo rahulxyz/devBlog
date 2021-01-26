@@ -2,7 +2,8 @@ import types from './types';
 
 const initalState = {
     user: undefined,
-    isAuthorised: false
+    isAuthorised: false,
+    error: ""
 }
 
 export function auth(state=initalState, action){
@@ -15,7 +16,13 @@ export function auth(state=initalState, action){
             return {
                 ...state,
                 user: action.payload,
-                isAuthorised: true
+                isAuthorised: true,
+                error: ""
+            }
+        case types.LOGIN_FAILURE:
+            return {
+                ...state,
+                error: "Unable to Login. Please check credentials!"
             }
         default:
             return state;

@@ -1,5 +1,6 @@
 import types from './types';
 import * as operations from './operations';
+import { showLoader } from '../components/loader/partials/actions';
 
 const actions = {
     login,
@@ -9,12 +10,12 @@ const actions = {
 function login(credentials){
    
     return async dispatch =>{
-        
+        dispatch(showLoader(true));
         dispatch(request());
         try{
             const response = await operations.login(credentials);
             const data = await response.data;
-            localStorage.setItem("token",data.token);
+            sessionStorage.setItem("token",data.token);
             const userData = {
                 username: data.name,
                 email: data.email
@@ -22,6 +23,8 @@ function login(credentials){
             dispatch(success(userData));
         }catch(error){
             dispatch(failure(error));
+        } finally{
+            dispatch(showLoader(false));
         }
     }
 
@@ -41,7 +44,7 @@ function login(credentials){
 function register(credentials){
    
     return async dispatch =>{
-
+        dispatch(showLoader(true));
         dispatch(request());
         try{
             const response = await operations.register(credentials);
@@ -50,6 +53,8 @@ function register(credentials){
         }catch(error){
             dispatch(failure(error));
             return Promise.reject();
+        }finally{
+            dispatch(showLoader(false));
         }
     }
 

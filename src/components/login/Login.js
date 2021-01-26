@@ -12,10 +12,6 @@ class Login extends Component {
     visibleTab: LOGIN,
   };
 
-  componentDidMount(){
-      this.props.login();
-  }
-
   componentDidUpdate(prevProps){
     if(prevProps.isAuthorised  !== this.props.isAuthorised && this.props.isAuthorised){
       this.props.history.push("/")
@@ -66,6 +62,7 @@ class Login extends Component {
     const loginTab = visibleTab === LOGIN ? "tablink tab-select" : "tablink";
     const registerTab =
       visibleTab === REGISTER ? "tablink tab-select" : "tablink";
+    const {loginError} = this.props;
 
     return (
       <section className="login-wrapper">
@@ -100,6 +97,7 @@ class Login extends Component {
                     autoComplete="new-password"
                     name="password"
                   />
+                  <p className="error-msg">{loginError}</p>
                   <button className="submit" type="submit">
                     Login
                   </button>
@@ -139,7 +137,8 @@ class Login extends Component {
 
 const mapStateToProps = (state)=>{
   return {
-    isAuthorised: state.auth.isAuthorised
+    isAuthorised: state.auth.isAuthorised,
+    loginError: state.auth.error
   }
 }
 
